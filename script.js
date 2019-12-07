@@ -12,7 +12,12 @@ function createMap () {
   var input = document.getElementById('search');
   var searchBox = new google.maps.places.SearchBox(input);
 
+// to ensure set bounds to search box
+  map.addListener('bounds_changed', function() {
+    searchBox.setBounds(map.getBounds());
+  });
 
+  
 
 
 
