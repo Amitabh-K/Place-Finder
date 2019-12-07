@@ -31,11 +31,24 @@ function createMap () {
     markers.forEach(function (m) { m.setMap(null); });
     markers = [];
 
+   
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function(p) {
+      if (!p.geometry)
+        return;
 
+      markers.push(new google.maps.Marker({
+        map: map,
+        title: p.name,
+        position: p.geometry.location
+      }));
 
-
-
-
-
-
-}
+      if (p.geometry.viewport)
+        bounds.union(p.geometry.viewport);
+      else
+        bounds.extend(p.geometry.location);
+    });
+    
+    map.fitBounds(bounds);
+  });
+}  
