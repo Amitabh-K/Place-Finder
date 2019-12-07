@@ -27,6 +27,7 @@ function createMap () {
     if (places.length == 0)
       return;
 
+      // getting rod of map
     markers.forEach(function (m) { m.setMap(null); });
     markers = [];
 
