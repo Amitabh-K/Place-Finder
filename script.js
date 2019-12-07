@@ -18,6 +18,17 @@ function createMap () {
   });
 
   
+  var markers = [];
+  // if user selects prediction from list
+
+  searchBox.addListener('places_changed', function () {
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0)
+      return;
+
+    markers.forEach(function (m) { m.setMap(null); });
+    markers = [];
 
 
 
